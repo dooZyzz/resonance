@@ -41,6 +41,8 @@ public class ModCreativeTabs {
                 output.accept(ModItems.GEODE_SHELL.get());
 
                 // Tools
+                output.accept(ModItems.TUNING_FORK.get());
+                output.accept(ModItems.RESONANCE_METER.get());
                 output.accept(ModItems.DIVINING_ROD.get());
             }).build());
 
