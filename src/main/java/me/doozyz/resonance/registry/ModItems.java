@@ -30,6 +30,9 @@ public class ModItems {
     // Block Items - Crystal Cluster
     public static final DeferredItem<BlockItem> CRYSTAL_CLUSTER = ITEMS.registerSimpleBlockItem("crystal_cluster", ModBlocks.CRYSTAL_CLUSTER);
 
+    // Block Items - Geode Shell
+    public static final DeferredItem<BlockItem> GEODE_SHELL = ITEMS.registerSimpleBlockItem("geode_shell", ModBlocks.GEODE_SHELL);
+
     public static void register(IEventBus modEventBus) {
         ITEMS.register(modEventBus);
     }

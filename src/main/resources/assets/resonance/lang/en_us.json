@@ -13,6 +13,7 @@
   "block.resonance.synthetic_crystal_block": "Synthetic Crystal Block",
   "block.resonance.ley_infused_crystal_block": "Ley-Infused Crystal Block",
   "block.resonance.crystal_cluster": "Crystal Cluster",
+  "block.resonance.geode_shell": "Geode Shell",
 
   "resonance.configuration.title": "Resonance Configs",
   "resonance.configuration.section.resonance.common.toml": "Resonance Configs",
