@@ -1,0 +1,13 @@
+{
+  "itemGroup.resonance": "Example Mod Tab",
+  "block.resonance.example_block": "Example Block",
+  "item.resonance.example_item": "Example Item",
+
+  "resonance.configuration.title": "Resonance Configs",
+  "resonance.configuration.section.resonance.common.toml": "Resonance Configs",
+  "resonance.configuration.section.resonance.common.toml.title": "Resonance Configs",
+  "resonance.configuration.items": "Item List",
+  "resonance.configuration.logDirtBlock": "Log Dirt Block",
+  "resonance.configuration.magicNumberIntroduction": "Magic Number Text",
+  "resonance.configuration.magicNumber": "Magic Number"
+}
