@@ -1,7 +1,18 @@
 {
-  "itemGroup.resonance": "Example Mod Tab",
-  "block.resonance.example_block": "Example Block",
-  "item.resonance.example_item": "Example Item",
+  "itemGroup.resonance": "Resonance",
+
+  "item.resonance.raw_crystal_shard": "Raw Crystal Shard",
+  "item.resonance.refined_crystal": "Refined Crystal",
+  "item.resonance.synthetic_crystal": "Synthetic Crystal",
+  "item.resonance.ley_infused_crystal": "Ley-Infused Crystal",
+
+  "block.resonance.raw_crystal_ore": "Crystal Ore",
+  "block.resonance.deepslate_crystal_ore": "Deepslate Crystal Ore",
+  "block.resonance.raw_crystal_block": "Raw Crystal Block",
+  "block.resonance.refined_crystal_block": "Refined Crystal Block",
+  "block.resonance.synthetic_crystal_block": "Synthetic Crystal Block",
+  "block.resonance.ley_infused_crystal_block": "Ley-Infused Crystal Block",
+  "block.resonance.crystal_cluster": "Crystal Cluster",
 
   "resonance.configuration.title": "Resonance Configs",
   "resonance.configuration.section.resonance.common.toml": "Resonance Configs",

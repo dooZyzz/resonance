@@ -13,21 +13,32 @@ import static me.doozyz.resonance.support.ModRef.MODID;
 
 public class ModCreativeTabs {
     private static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> EXAMPLE_TAB = CREATIVE_MODE_TABS.register("example_tab", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup.resonance")) //The language key for the title of your CreativeModeTab
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> RESONANCE_TAB = CREATIVE_MODE_TABS.register("resonance_tab", () -> CreativeModeTab.builder()
+            .title(Component.translatable("itemGroup.resonance"))
             .withTabsBefore(CreativeModeTabs.COMBAT)
-            .icon(() -> ModItems.EXAMPLE_ITEM.get().getDefaultInstance())
+            .icon(() -> ModItems.RAW_CRYSTAL_SHARD.get().getDefaultInstance())
             .displayItems((parameters, output) -> {
-                output.accept(ModItems.EXAMPLE_ITEM.get()); // Add the example item to the tab. For your own tabs, this method is preferred over the event
+                // Crystal Items
+                output.accept(ModItems.RAW_CRYSTAL_SHARD.get());
+                output.accept(ModItems.REFINED_CRYSTAL.get());
+                output.accept(ModItems.SYNTHETIC_CRYSTAL.get());
+                output.accept(ModItems.LEY_INFUSED_CRYSTAL.get());
+
+                // Ores
+                output.accept(ModItems.RAW_CRYSTAL_ORE.get());
+                output.accept(ModItems.DEEPSLATE_CRYSTAL_ORE.get());
+
+                // Storage Blocks
+                output.accept(ModItems.RAW_CRYSTAL_BLOCK.get());
+                output.accept(ModItems.REFINED_CRYSTAL_BLOCK.get());
+                output.accept(ModItems.SYNTHETIC_CRYSTAL_BLOCK.get());
+                output.accept(ModItems.LEY_INFUSED_CRYSTAL_BLOCK.get());
+
+                // Crystal Cluster
+                output.accept(ModItems.CRYSTAL_CLUSTER.get());
             }).build());
 
-    public static void register(IEventBus modEventBus){
-        modEventBus.addListener(ModCreativeTabs::addCreative);
-    }
-
-    private static void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-            event.accept(ModItems.EXAMPLE_BLOCK_ITEM);
-        }
+    public static void register(IEventBus modEventBus) {
+        CREATIVE_MODE_TABS.register(modEventBus);
     }
 }
