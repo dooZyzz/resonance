@@ -25,9 +25,13 @@ public class ResonanceNetwork {
     private final Set<BlockPos> sources = new HashSet<>();
     private final Set<BlockPos> sinks = new HashSet<>();
 
+    // Propagation engine
+    private final WavePropagationEngine propagationEngine;
+
     public ResonanceNetwork(UUID id, Level level) {
         this.id = id;
         this.level = level;
+        this.propagationEngine = new WavePropagationEngine(this);
     }
 
     public UUID getId() {
@@ -136,8 +140,26 @@ public class ResonanceNetwork {
 
         computedStates.clear();
 
-        // Propagate from all sources (will be implemented in Phase 2.3)
-        // For now, just mark as needing implementation
+        // Propagate from all sources
+        for (BlockPos sourcePos : sources) {
+            IResonanceGenerator generator = (IResonanceGenerator) nodes.get(sourcePos);
+            if (generator != null && generator.canGenerate()) {
+                ResonanceState generatedState = generator.getGeneratedResonance();
+                propagationEngine.propagateFrom(sourcePos, generatedState, computedStates);
+            }
+        }
+
+        // Detect interference at junctions
+        propagationEngine.detectInterference(computedStates);
+
+        // Notify all nodes of their new state
+        for (Map.Entry<BlockPos, ResonanceState> entry : computedStates.entrySet()) {
+            IResonanceNode node = nodes.get(entry.getKey());
+            if (node != null) {
+                // Update the node with its computed state
+                node.receiveResonance(null, entry.getValue());
+            }
+        }
     }
 
     /**
