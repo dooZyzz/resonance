@@ -1,0 +1,29 @@
+{
+  "variants": {
+    "facing=up": {
+      "model": "resonance:block/crystal_cluster"
+    },
+    "facing=down": {
+      "model": "resonance:block/crystal_cluster",
+      "x": 180
+    },
+    "facing=north": {
+      "model": "resonance:block/crystal_cluster",
+      "x": 270
+    },
+    "facing=south": {
+      "model": "resonance:block/crystal_cluster",
+      "x": 90
+    },
+    "facing=west": {
+      "model": "resonance:block/crystal_cluster",
+      "x": 90,
+      "y": 270
+    },
+    "facing=east": {
+      "model": "resonance:block/crystal_cluster",
+      "x": 90,
+      "y": 90
+    }
+  }
+}
