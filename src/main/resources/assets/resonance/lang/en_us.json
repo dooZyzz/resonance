@@ -25,6 +25,7 @@
   "block.resonance.refined_node": "Refined Crystal Node",
   "block.resonance.synthetic_node": "Synthetic Crystal Node",
   "block.resonance.ley_infused_node": "Ley-Infused Crystal Node",
+  "block.resonance.ambient_collector": "Ambient Resonance Collector",
 
   "resonance.configuration.title": "Resonance Configs",
   "resonance.configuration.section.resonance.common.toml": "Resonance Configs",

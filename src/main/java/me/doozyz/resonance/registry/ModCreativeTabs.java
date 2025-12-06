@@ -52,6 +52,9 @@ public class ModCreativeTabs {
                 output.accept(ModItems.SYNTHETIC_NODE.get());
                 output.accept(ModItems.LEY_INFUSED_NODE.get());
 
+                // Generators
+                output.accept(ModItems.AMBIENT_COLLECTOR.get());
+
                 // Tools
                 output.accept(ModItems.TUNING_FORK.get());
                 output.accept(ModItems.RESONANCE_METER.get());

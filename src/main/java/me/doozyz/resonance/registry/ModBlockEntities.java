@@ -48,6 +48,14 @@ public class ModBlockEntities {
             )
     );
 
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<me.doozyz.resonance.content.blockentity.AmbientCollectorBlockEntity>> AMBIENT_COLLECTOR = REGISTRY.register(
+            "ambient_collector",
+            () -> new BlockEntityType<>(
+                    me.doozyz.resonance.content.blockentity.AmbientCollectorBlockEntity::new,
+                    java.util.Set.of(ModBlocks.AMBIENT_COLLECTOR.get())
+            )
+    );
+
     public static void register(IEventBus modEventBus) {
         REGISTRY.register(modEventBus);
     }
