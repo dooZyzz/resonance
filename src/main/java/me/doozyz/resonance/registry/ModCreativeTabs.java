@@ -39,6 +39,9 @@ public class ModCreativeTabs {
 
                 // Geode Shell
                 output.accept(ModItems.GEODE_SHELL.get());
+
+                // Tools
+                output.accept(ModItems.DIVINING_ROD.get());
             }).build());
 
     public static void register(IEventBus modEventBus) {
