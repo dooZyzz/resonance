@@ -40,6 +40,18 @@ public class ModCreativeTabs {
                 // Geode Shell
                 output.accept(ModItems.GEODE_SHELL.get());
 
+                // Crystal Prisms
+                output.accept(ModItems.RAW_PRISM.get());
+                output.accept(ModItems.REFINED_PRISM.get());
+                output.accept(ModItems.SYNTHETIC_PRISM.get());
+                output.accept(ModItems.LEY_INFUSED_PRISM.get());
+
+                // Crystal Nodes
+                output.accept(ModItems.RAW_NODE.get());
+                output.accept(ModItems.REFINED_NODE.get());
+                output.accept(ModItems.SYNTHETIC_NODE.get());
+                output.accept(ModItems.LEY_INFUSED_NODE.get());
+
                 // Tools
                 output.accept(ModItems.TUNING_FORK.get());
                 output.accept(ModItems.RESONANCE_METER.get());

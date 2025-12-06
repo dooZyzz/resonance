@@ -85,6 +85,88 @@ public class ModBlocks {
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.STONE));
 
+    // Crystal Prisms (Straight Conduits)
+    public static final DeferredBlock<me.doozyz.resonance.content.block.CrystalPrismBlock> RAW_PRISM = BLOCKS.registerBlock("raw_prism",
+            properties -> new me.doozyz.resonance.content.block.CrystalPrismBlock(CrystalTier.RAW, properties),
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PURPLE)
+                    .strength(2.0f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.AMETHYST)
+                    .noOcclusion()
+                    .lightLevel(state -> 3));
+
+    public static final DeferredBlock<me.doozyz.resonance.content.block.CrystalPrismBlock> REFINED_PRISM = BLOCKS.registerBlock("refined_prism",
+            properties -> new me.doozyz.resonance.content.block.CrystalPrismBlock(CrystalTier.REFINED, properties),
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_BLUE)
+                    .strength(2.5f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.AMETHYST)
+                    .noOcclusion()
+                    .lightLevel(state -> 7));
+
+    public static final DeferredBlock<me.doozyz.resonance.content.block.CrystalPrismBlock> SYNTHETIC_PRISM = BLOCKS.registerBlock("synthetic_prism",
+            properties -> new me.doozyz.resonance.content.block.CrystalPrismBlock(CrystalTier.SYNTHETIC, properties),
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_CYAN)
+                    .strength(3.0f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.AMETHYST)
+                    .noOcclusion()
+                    .lightLevel(state -> 11));
+
+    public static final DeferredBlock<me.doozyz.resonance.content.block.CrystalPrismBlock> LEY_INFUSED_PRISM = BLOCKS.registerBlock("ley_infused_prism",
+            properties -> new me.doozyz.resonance.content.block.CrystalPrismBlock(CrystalTier.LEY_INFUSED, properties),
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_MAGENTA)
+                    .strength(3.5f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.AMETHYST)
+                    .noOcclusion()
+                    .lightLevel(state -> 15));
+
+    // Crystal Nodes (Junctions)
+    public static final DeferredBlock<me.doozyz.resonance.content.block.CrystalNodeBlock> RAW_NODE = BLOCKS.registerBlock("raw_node",
+            properties -> new me.doozyz.resonance.content.block.CrystalNodeBlock(CrystalTier.RAW, properties),
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PURPLE)
+                    .strength(2.0f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.AMETHYST)
+                    .noOcclusion()
+                    .lightLevel(state -> 3));
+
+    public static final DeferredBlock<me.doozyz.resonance.content.block.CrystalNodeBlock> REFINED_NODE = BLOCKS.registerBlock("refined_node",
+            properties -> new me.doozyz.resonance.content.block.CrystalNodeBlock(CrystalTier.REFINED, properties),
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_BLUE)
+                    .strength(2.5f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.AMETHYST)
+                    .noOcclusion()
+                    .lightLevel(state -> 7));
+
+    public static final DeferredBlock<me.doozyz.resonance.content.block.CrystalNodeBlock> SYNTHETIC_NODE = BLOCKS.registerBlock("synthetic_node",
+            properties -> new me.doozyz.resonance.content.block.CrystalNodeBlock(CrystalTier.SYNTHETIC, properties),
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_CYAN)
+                    .strength(3.0f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.AMETHYST)
+                    .noOcclusion()
+                    .lightLevel(state -> 11));
+
+    public static final DeferredBlock<me.doozyz.resonance.content.block.CrystalNodeBlock> LEY_INFUSED_NODE = BLOCKS.registerBlock("ley_infused_node",
+            properties -> new me.doozyz.resonance.content.block.CrystalNodeBlock(CrystalTier.LEY_INFUSED, properties),
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_MAGENTA)
+                    .strength(3.5f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.AMETHYST)
+                    .noOcclusion()
+                    .lightLevel(state -> 15));
+
     public static void register(IEventBus modEventBus) {
         BLOCKS.register(modEventBus);
     }
