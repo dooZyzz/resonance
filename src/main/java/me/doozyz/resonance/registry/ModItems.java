@@ -41,6 +41,18 @@ public class ModItems {
     // Block Items - Geode Shell
     public static final DeferredItem<BlockItem> GEODE_SHELL = ITEMS.registerSimpleBlockItem("geode_shell", ModBlocks.GEODE_SHELL);
 
+    // Block Items - Crystal Prisms
+    public static final DeferredItem<BlockItem> RAW_PRISM = ITEMS.registerSimpleBlockItem("raw_prism", ModBlocks.RAW_PRISM);
+    public static final DeferredItem<BlockItem> REFINED_PRISM = ITEMS.registerSimpleBlockItem("refined_prism", ModBlocks.REFINED_PRISM);
+    public static final DeferredItem<BlockItem> SYNTHETIC_PRISM = ITEMS.registerSimpleBlockItem("synthetic_prism", ModBlocks.SYNTHETIC_PRISM);
+    public static final DeferredItem<BlockItem> LEY_INFUSED_PRISM = ITEMS.registerSimpleBlockItem("ley_infused_prism", ModBlocks.LEY_INFUSED_PRISM);
+
+    // Block Items - Crystal Nodes
+    public static final DeferredItem<BlockItem> RAW_NODE = ITEMS.registerSimpleBlockItem("raw_node", ModBlocks.RAW_NODE);
+    public static final DeferredItem<BlockItem> REFINED_NODE = ITEMS.registerSimpleBlockItem("refined_node", ModBlocks.REFINED_NODE);
+    public static final DeferredItem<BlockItem> SYNTHETIC_NODE = ITEMS.registerSimpleBlockItem("synthetic_node", ModBlocks.SYNTHETIC_NODE);
+    public static final DeferredItem<BlockItem> LEY_INFUSED_NODE = ITEMS.registerSimpleBlockItem("ley_infused_node", ModBlocks.LEY_INFUSED_NODE);
+
     public static void register(IEventBus modEventBus) {
         ITEMS.register(modEventBus);
     }

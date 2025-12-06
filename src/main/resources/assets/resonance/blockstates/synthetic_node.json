@@ -1,0 +1,63 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "resonance:block/synthetic_node_core"
+      }
+    },
+    {
+      "when": {
+        "north": "true"
+      },
+      "apply": {
+        "model": "resonance:block/synthetic_node_arm",
+        "y": 0
+      }
+    },
+    {
+      "when": {
+        "south": "true"
+      },
+      "apply": {
+        "model": "resonance:block/synthetic_node_arm",
+        "y": 180
+      }
+    },
+    {
+      "when": {
+        "west": "true"
+      },
+      "apply": {
+        "model": "resonance:block/synthetic_node_arm",
+        "y": 270
+      }
+    },
+    {
+      "when": {
+        "east": "true"
+      },
+      "apply": {
+        "model": "resonance:block/synthetic_node_arm",
+        "y": 90
+      }
+    },
+    {
+      "when": {
+        "up": "true"
+      },
+      "apply": {
+        "model": "resonance:block/synthetic_node_arm",
+        "x": 270
+      }
+    },
+    {
+      "when": {
+        "down": "true"
+      },
+      "apply": {
+        "model": "resonance:block/synthetic_node_arm",
+        "x": 90
+      }
+    }
+  ]
+}

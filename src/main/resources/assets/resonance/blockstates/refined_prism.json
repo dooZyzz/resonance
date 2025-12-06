@@ -1,0 +1,25 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "resonance:block/refined_prism_y",
+      "x": 180
+    },
+    "facing=up": {
+      "model": "resonance:block/refined_prism_y"
+    },
+    "facing=north": {
+      "model": "resonance:block/refined_prism_z"
+    },
+    "facing=south": {
+      "model": "resonance:block/refined_prism_z",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "resonance:block/refined_prism_x"
+    },
+    "facing=east": {
+      "model": "resonance:block/refined_prism_x",
+      "y": 180
+    }
+  }
+}
