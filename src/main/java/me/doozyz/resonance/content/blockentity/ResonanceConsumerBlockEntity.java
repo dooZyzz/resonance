@@ -116,7 +116,9 @@ public abstract class ResonanceConsumerBlockEntity extends BlockEntity implement
         renderEfficiency = net.minecraft.util.Mth.lerp(0.1f, renderEfficiency, efficiency);
 
         // Spawn visual effects when powered
-        if (powered && level != null && level.getRandom().nextFloat() < 0.05f) {
+        // Check if actually receiving resonance (not just powered flag)
+        if (receivedState.isActive() && receivedState.amplitude() >= requirement.minAmplitude()
+                && level != null && level.getRandom().nextFloat() < 0.05f) {
             spawnProcessingParticles();
         }
     }

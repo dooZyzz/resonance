@@ -82,21 +82,27 @@ public abstract class ResonanceGeneratorBlockEntity extends BlockEntity implemen
      * Server-side tick - manages generation state
      */
     public void serverTick() {
+        // Debug logging on first tick
+        if (level != null && level.getGameTime() % 100 == 0) {
+            me.doozyz.resonance.support.ModRef.info("Generator serverTick called at {}", worldPosition);
+        }
+
         boolean wasActive = active;
         float oldFrequency = generatedFrequency;
         float oldAmplitude = generatedAmplitude;
 
-        // Subclass determines if generation is possible
+        // Always update generated resonance (e.g., for energy accumulation)
+        updateGeneratedResonance();
+
+        // Clamp to tier limits
+        generatedFrequency = Math.min(generatedFrequency, tier.getMaxFrequency());
+        generatedAmplitude = Math.min(generatedAmplitude, tier.getMaxAmplitude());
+
+        // Check if can generate after updating
         active = checkCanGenerate();
 
-        if (active) {
-            // Calculate output based on subclass logic
-            updateGeneratedResonance();
-
-            // Clamp to tier limits
-            generatedFrequency = Math.min(generatedFrequency, tier.getMaxFrequency());
-            generatedAmplitude = Math.min(generatedAmplitude, tier.getMaxAmplitude());
-        } else {
+        if (!active) {
+            // If can't generate, zero out the amplitude
             generatedAmplitude = 0;
         }
 

@@ -55,6 +55,9 @@ public class ModCreativeTabs {
                 // Generators
                 output.accept(ModItems.AMBIENT_COLLECTOR.get());
 
+                // Consumers
+                output.accept(ModItems.RESONANCE_BEACON.get());
+
                 // Tools
                 output.accept(ModItems.TUNING_FORK.get());
                 output.accept(ModItems.RESONANCE_METER.get());

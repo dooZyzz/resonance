@@ -56,6 +56,14 @@ public class ModBlockEntities {
             )
     );
 
+    public static final DeferredHolder<BlockEntityType<?>, BlockEntityType<me.doozyz.resonance.content.blockentity.ResonanceBeaconBlockEntity>> RESONANCE_BEACON = REGISTRY.register(
+            "resonance_beacon",
+            () -> new BlockEntityType<>(
+                    me.doozyz.resonance.content.blockentity.ResonanceBeaconBlockEntity::new,
+                    java.util.Set.of(ModBlocks.RESONANCE_BEACON.get())
+            )
+    );
+
     public static void register(IEventBus modEventBus) {
         REGISTRY.register(modEventBus);
     }

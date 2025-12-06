@@ -178,6 +178,17 @@ public class ModBlocks {
                     .noOcclusion()
                     .lightLevel(state -> 5));
 
+    // Consumers
+    public static final DeferredBlock<me.doozyz.resonance.content.block.ResonanceBeaconBlock> RESONANCE_BEACON = BLOCKS.registerBlock("resonance_beacon",
+            me.doozyz.resonance.content.block.ResonanceBeaconBlock::new,
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PURPLE)
+                    .strength(3.0f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.AMETHYST)
+                    .noOcclusion()
+                    .lightLevel(state -> state.getValue(me.doozyz.resonance.content.block.ResonanceBeaconBlock.POWERED) ? 15 : 0));
+
     public static void register(IEventBus modEventBus) {
         BLOCKS.register(modEventBus);
     }
