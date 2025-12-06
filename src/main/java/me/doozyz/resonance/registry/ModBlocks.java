@@ -167,6 +167,17 @@ public class ModBlocks {
                     .noOcclusion()
                     .lightLevel(state -> 15));
 
+    // Generators
+    public static final DeferredBlock<me.doozyz.resonance.content.block.AmbientCollectorBlock> AMBIENT_COLLECTOR = BLOCKS.registerBlock("ambient_collector",
+            me.doozyz.resonance.content.block.AmbientCollectorBlock::new,
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.COLOR_PURPLE)
+                    .strength(2.0f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.AMETHYST)
+                    .noOcclusion()
+                    .lightLevel(state -> 5));
+
     public static void register(IEventBus modEventBus) {
         BLOCKS.register(modEventBus);
     }

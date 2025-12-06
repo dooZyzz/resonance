@@ -53,6 +53,9 @@ public class ModItems {
     public static final DeferredItem<BlockItem> SYNTHETIC_NODE = ITEMS.registerSimpleBlockItem("synthetic_node", ModBlocks.SYNTHETIC_NODE);
     public static final DeferredItem<BlockItem> LEY_INFUSED_NODE = ITEMS.registerSimpleBlockItem("ley_infused_node", ModBlocks.LEY_INFUSED_NODE);
 
+    // Block Items - Generators
+    public static final DeferredItem<BlockItem> AMBIENT_COLLECTOR = ITEMS.registerSimpleBlockItem("ambient_collector", ModBlocks.AMBIENT_COLLECTOR);
+
     public static void register(IEventBus modEventBus) {
         ITEMS.register(modEventBus);
     }
