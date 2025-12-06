@@ -1,6 +1,8 @@
 package me.doozyz.resonance.registry;
 
 import me.doozyz.resonance.content.item.DiviningRodItem;
+import me.doozyz.resonance.content.item.ResonanceMeterItem;
+import me.doozyz.resonance.content.item.TuningForkItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
@@ -19,6 +21,8 @@ public class ModItems {
     public static final DeferredItem<Item> LEY_INFUSED_CRYSTAL = ITEMS.registerItem("ley_infused_crystal", Item::new, Item.Properties::new);
 
     // Tools
+    public static final DeferredItem<Item> TUNING_FORK = ITEMS.registerItem("tuning_fork", TuningForkItem::new, () -> new Item.Properties().stacksTo(1));
+    public static final DeferredItem<Item> RESONANCE_METER = ITEMS.registerItem("resonance_meter", ResonanceMeterItem::new, () -> new Item.Properties().stacksTo(1));
     public static final DeferredItem<Item> DIVINING_ROD = ITEMS.registerItem("divining_rod", DiviningRodItem::new, () -> new Item.Properties().stacksTo(1));
 
     // Block Items - Ores
