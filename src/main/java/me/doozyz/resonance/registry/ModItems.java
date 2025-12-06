@@ -1,5 +1,6 @@
 package me.doozyz.resonance.registry;
 
+import me.doozyz.resonance.content.item.DiviningRodItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.neoforged.bus.api.IEventBus;
@@ -16,6 +17,9 @@ public class ModItems {
     public static final DeferredItem<Item> REFINED_CRYSTAL = ITEMS.registerItem("refined_crystal", Item::new, Item.Properties::new);
     public static final DeferredItem<Item> SYNTHETIC_CRYSTAL = ITEMS.registerItem("synthetic_crystal", Item::new, Item.Properties::new);
     public static final DeferredItem<Item> LEY_INFUSED_CRYSTAL = ITEMS.registerItem("ley_infused_crystal", Item::new, Item.Properties::new);
+
+    // Tools
+    public static final DeferredItem<Item> DIVINING_ROD = ITEMS.registerItem("divining_rod", DiviningRodItem::new, () -> new Item.Properties().stacksTo(1));
 
     // Block Items - Ores
     public static final DeferredItem<BlockItem> RAW_CRYSTAL_ORE = ITEMS.registerSimpleBlockItem("raw_crystal_ore", ModBlocks.RAW_CRYSTAL_ORE);
