@@ -76,6 +76,15 @@ public class ModBlocks {
                     .strength(1.5f)
                     .lightLevel(state -> 5));
 
+    // Geode Shell
+    public static final DeferredBlock<Block> GEODE_SHELL = BLOCKS.registerBlock("geode_shell",
+            Block::new,
+            () -> BlockBehaviour.Properties.of()
+                    .mapColor(MapColor.STONE)
+                    .strength(1.5f, 1.5f)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.STONE));
+
     public static void register(IEventBus modEventBus) {
         BLOCKS.register(modEventBus);
     }

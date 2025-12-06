@@ -36,6 +36,9 @@ public class ModCreativeTabs {
 
                 // Crystal Cluster
                 output.accept(ModItems.CRYSTAL_CLUSTER.get());
+
+                // Geode Shell
+                output.accept(ModItems.GEODE_SHELL.get());
             }).build());
 
     public static void register(IEventBus modEventBus) {
