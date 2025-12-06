@@ -35,6 +35,7 @@ public class CommonEvents {
         ModDataComponents.register(modEventBus);
         ModAttachments.register(modEventBus);
         ModCreativeTabs.register(modEventBus);
+        ModPackets.register(modEventBus);
     }
 
     private static void commonSetup(FMLCommonSetupEvent event) {
