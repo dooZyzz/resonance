@@ -56,6 +56,9 @@ public class ModItems {
     // Block Items - Generators
     public static final DeferredItem<BlockItem> AMBIENT_COLLECTOR = ITEMS.registerSimpleBlockItem("ambient_collector", ModBlocks.AMBIENT_COLLECTOR);
 
+    // Block Items - Consumers
+    public static final DeferredItem<BlockItem> RESONANCE_BEACON = ITEMS.registerSimpleBlockItem("resonance_beacon", ModBlocks.RESONANCE_BEACON);
+
     public static void register(IEventBus modEventBus) {
         ITEMS.register(modEventBus);
     }

@@ -104,9 +104,12 @@ public class ResonanceNetworkManager extends SavedData {
             splitNetworkIfNeeded(network);
         }
 
-        // Remove empty networks
+        // Remove empty networks or force recalculation
         if (network.isEmpty()) {
             networks.remove(networkId);
+        } else {
+            // Force immediate recalculation of remaining network
+            network.markDirty();
         }
 
         setDirty();
@@ -124,17 +127,22 @@ public class ResonanceNetworkManager extends SavedData {
      * Tick all networks
      */
     public void tick() {
-        // Update networks that need recalculation
-        for (UUID networkId : networksNeedingUpdate) {
-            ResonanceNetwork network = networks.get(networkId);
-            if (network != null) {
+        // Create a snapshot to avoid ConcurrentModificationException
+        // (networks can be added/removed during recalculation/splitting)
+        java.util.List<ResonanceNetwork> networkSnapshot = new java.util.ArrayList<>(networks.values());
+
+        // Recalculate all networks
+        for (ResonanceNetwork network : networkSnapshot) {
+            if (!network.getAllPositions().isEmpty()) {
                 network.recalculate();
             }
         }
         networksNeedingUpdate.clear();
 
-        // Tick all networks
-        for (ResonanceNetwork network : networks.values()) {
+        // Tick all networks (phase advancement, consumption)
+        // Create new snapshot in case networks were modified during recalculation
+        networkSnapshot = new java.util.ArrayList<>(networks.values());
+        for (ResonanceNetwork network : networkSnapshot) {
             network.tick();
         }
     }
@@ -264,7 +272,9 @@ public class ResonanceNetworkManager extends SavedData {
 
     private IResonanceNode getNodeFromLevel(BlockPos pos) {
         // Get node from block entity at position
-        // TODO: Implement when block entities are created
+        if (level.getBlockEntity(pos) instanceof IResonanceNode node) {
+            return node;
+        }
         return null;
     }
 }

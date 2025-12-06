@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "powered=false": {
+      "model": "resonance:block/resonance_beacon"
+    },
+    "powered=true": {
+      "model": "resonance:block/resonance_beacon_powered"
+    }
+  }
+}

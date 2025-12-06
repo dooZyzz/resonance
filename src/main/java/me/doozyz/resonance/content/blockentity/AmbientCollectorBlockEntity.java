@@ -39,6 +39,12 @@ public class AmbientCollectorBlockEntity extends ResonanceGeneratorBlockEntity {
     protected void updateGeneratedResonance() {
         if (level == null) return;
 
+        // Debug logging every 5 seconds
+        if (level.getGameTime() % 100 == 0) {
+            me.doozyz.resonance.support.ModRef.info("Ambient Collector at {} - Energy: {}, Active: {}, Freq: {}, Amp: {}",
+                    worldPosition, collectedEnergy, active, generatedFrequency, generatedAmplitude);
+        }
+
         // Base collection rate
         float rate = COLLECTION_RATE;
 
@@ -125,6 +131,7 @@ public class AmbientCollectorBlockEntity extends ResonanceGeneratorBlockEntity {
                     0, -0.05, 0  // Fall downward
             );
         }
+
     }
 
     // NBT Serialization

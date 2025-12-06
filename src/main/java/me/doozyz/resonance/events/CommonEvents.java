@@ -2,6 +2,7 @@ package me.doozyz.resonance.events;
 
 import me.doozyz.resonance.command.LeyLineCommand;
 import me.doozyz.resonance.content.leyline.LeyLineHelper;
+import me.doozyz.resonance.content.resonance.ResonanceNetworkManager;
 import me.doozyz.resonance.registry.*;
 import me.doozyz.resonance.support.ModConfig;
 import me.doozyz.resonance.support.ModRef;
@@ -16,6 +17,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import net.neoforged.neoforge.event.level.ChunkEvent;
+import net.neoforged.neoforge.event.tick.LevelTickEvent;
 
 public class CommonEvents {
     public CommonEvents(ModContainer container, IEventBus modEventBus, IEventBus forgeBus) {
@@ -24,6 +26,7 @@ public class CommonEvents {
         modEventBus.addListener(CommonEvents::commonSetup);
         forgeBus.addListener(CommonEvents::onChunkLoad);
         forgeBus.addListener(CommonEvents::onRegisterCommands);
+        forgeBus.addListener(CommonEvents::onServerTick);
     }
 
     private static void registerRegistries(IEventBus modEventBus) {
@@ -61,5 +64,19 @@ public class CommonEvents {
 
     private static void onRegisterCommands(RegisterCommandsEvent event) {
         LeyLineCommand.register(event.getDispatcher());
+    }
+
+    private static void onServerTick(LevelTickEvent.Post event) {
+        if (event.getLevel() instanceof ServerLevel serverLevel) {
+            // Tick the resonance network manager for this level
+            ResonanceNetworkManager manager = ResonanceNetworkManager.get(serverLevel);
+
+            // Debug logging every 5 seconds
+            if (serverLevel.getGameTime() % 100 == 0 && !manager.toString().isEmpty()) {
+                ModRef.info("Ticking network manager - Networks active");
+            }
+
+            manager.tick();
+        }
     }
 }

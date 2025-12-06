@@ -42,6 +42,11 @@ public class AmbientCollectorBlock extends ResonanceGeneratorBlock {
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(@NotNull Level level, @NotNull BlockState state, @NotNull BlockEntityType<T> type) {
-        return createGeneratorTicker(level, type, ModBlockEntities.AMBIENT_COLLECTOR.get());
+        return level.isClientSide() ? null : createTickerHelper(type, ModBlockEntities.AMBIENT_COLLECTOR.get(),
+                (lvl, pos, st, blockEntity) -> {
+                    if (blockEntity instanceof me.doozyz.resonance.content.blockentity.AmbientCollectorBlockEntity collector) {
+                        collector.serverTick();
+                    }
+                });
     }
 }

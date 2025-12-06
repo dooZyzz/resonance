@@ -135,29 +135,55 @@ public class ResonanceNetwork {
      * Recalculate resonance distribution across network
      */
     public void recalculate() {
-        if (!needsRecalculation) return;
+        // Always recalculate - don't skip based on needsRecalculation
+        // This ensures nodes get updated when sources change or disconnect
         needsRecalculation = false;
 
         computedStates.clear();
 
-        // Propagate from all sources
+        // Debug logging
+        me.doozyz.resonance.support.ModRef.info("Network {} recalculating - Sources: {}, Sinks: {}, Total nodes: {}",
+                id.toString().substring(0, 8), sources.size(), sinks.size(), nodes.size());
+
+        // Calculate total consumption first
+        float totalConsumption = 0;
+        for (BlockPos sinkPos : sinks) {
+            IResonanceConsumer consumer = (IResonanceConsumer) nodes.get(sinkPos);
+            if (consumer != null && consumer.isPowered()) {
+                totalConsumption += consumer.getAmplitudeConsumption();
+            }
+        }
+
+        // Propagate from all sources (accounting for consumption)
         for (BlockPos sourcePos : sources) {
             IResonanceGenerator generator = (IResonanceGenerator) nodes.get(sourcePos);
             if (generator != null && generator.canGenerate()) {
                 ResonanceState generatedState = generator.getGeneratedResonance();
-                propagationEngine.propagateFrom(sourcePos, generatedState, computedStates);
+
+                // Reduce amplitude by consumption (divide among sources)
+                float availableAmplitude = generatedState.amplitude();
+                if (sources.size() > 0) {
+                    availableAmplitude = Math.max(0, availableAmplitude - (totalConsumption / sources.size()));
+                }
+
+                ResonanceState reducedState = generatedState.withAmplitude(availableAmplitude);
+
+                me.doozyz.resonance.support.ModRef.info("  Propagating from {} - {} Hz / {} A (after {} A consumption)",
+                        sourcePos, reducedState.frequency(), reducedState.amplitude(), totalConsumption);
+                propagationEngine.propagateFrom(sourcePos, reducedState, computedStates);
             }
         }
 
         // Detect interference at junctions
         propagationEngine.detectInterference(computedStates);
 
-        // Notify all nodes of their new state
-        for (Map.Entry<BlockPos, ResonanceState> entry : computedStates.entrySet()) {
-            IResonanceNode node = nodes.get(entry.getKey());
+        // Notify ALL nodes of their new state (including those receiving EMPTY)
+        for (BlockPos nodePos : nodes.keySet()) {
+            IResonanceNode node = nodes.get(nodePos);
             if (node != null) {
-                // Update the node with its computed state
-                node.receiveResonance(null, entry.getValue());
+                // Get computed state or EMPTY if node didn't receive resonance
+                ResonanceState state = computedStates.getOrDefault(nodePos, ResonanceState.EMPTY);
+                node.receiveResonance(null, state);
             }
         }
     }
